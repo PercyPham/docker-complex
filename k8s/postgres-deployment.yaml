@@ -25,3 +25,10 @@ spec:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
               subPath: postgres
+          env:
+            # run in terminal: kubectl create secret generic pgpassword --from-literal PGPASSWORD=password123
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
